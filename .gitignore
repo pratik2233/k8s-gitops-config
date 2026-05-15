@@ -1,0 +1,6 @@
+
+*.log
+.env
+secrets-plain.yaml
+*.pem
+*.key
