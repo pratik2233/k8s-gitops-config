@@ -1,0 +1,8 @@
+replicaCount: 3
+
+config:
+  APP_NAME: worker
+  APP_ENV: prod
+
+ingress:
+  enabled: false

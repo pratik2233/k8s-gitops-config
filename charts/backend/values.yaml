@@ -1,0 +1,41 @@
+replicaCount: 2
+
+image:
+  repository: hashicorp/http-echo
+  tag: "1.0"
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8080
+  targetPort: 5678
+
+containerPort: 5678
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 300m
+    memory: 256Mi
+
+config:
+  APP_NAME: backend
+  APP_ENV: default
+
+secret:
+  DEMO_SECRET: backend-secret-value
+
+ingress:
+  enabled: true
+  className: nginx
+  host: backend.local
+  path: /
+
+hpa:
+  enabled: false
+  minReplicas: 2
+  maxReplicas: 8
+  cpuUtilization: 60
+  memoryUtilization: 70

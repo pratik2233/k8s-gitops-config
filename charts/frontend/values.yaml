@@ -1,0 +1,41 @@
+replicaCount: 2
+
+image:
+  repository: nginx
+  tag: "1.27"
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 80
+
+containerPort: 80
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 300m
+    memory: 256Mi
+
+config:
+  APP_NAME: frontend
+  APP_ENV: default
+
+secret:
+  DEMO_SECRET: frontend-secret-value
+
+ingress:
+  enabled: true
+  className: nginx
+  host: frontend.local
+  path: /
+
+hpa:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 8
+  cpuUtilization: 60
+  memoryUtilization: 70

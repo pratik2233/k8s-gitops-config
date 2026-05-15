@@ -1,0 +1,11 @@
+replicaCount: 2
+
+config:
+  APP_NAME: frontend
+  APP_ENV: dev
+
+ingress:
+  enabled: true
+  className: nginx
+  host: frontend-dev.local
+  path: /

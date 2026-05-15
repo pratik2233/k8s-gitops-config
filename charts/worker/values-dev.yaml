@@ -1,0 +1,8 @@
+replicaCount: 2
+
+config:
+  APP_NAME: worker
+  APP_ENV: dev
+
+ingress:
+  enabled: false

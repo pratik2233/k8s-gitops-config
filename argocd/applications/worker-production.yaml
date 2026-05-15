@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: worker-production
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: git@github.com:pratik2233/k8s-gitops-config.git
+    targetRevision: main
+    path: charts/worker
+    helm:
+      valueFiles:
+        - values-prod.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: production
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

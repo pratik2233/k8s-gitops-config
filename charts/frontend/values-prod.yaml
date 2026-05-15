@@ -1,0 +1,11 @@
+replicaCount: 3
+
+config:
+  APP_NAME: frontend
+  APP_ENV: prod
+
+ingress:
+  enabled: true
+  className: nginx
+  host: frontend-prod.local
+  path: /

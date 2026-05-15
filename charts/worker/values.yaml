@@ -1,0 +1,41 @@
+replicaCount: 2
+
+image:
+  repository: busybox
+  tag: "1.36"
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8081
+  targetPort: 8081
+
+containerPort: 8081
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 128Mi
+
+config:
+  APP_NAME: worker
+  APP_ENV: default
+
+secret:
+  DEMO_SECRET: worker-secret-value
+
+ingress:
+  enabled: false
+  className: nginx
+  host: worker.local
+  path: /
+
+hpa:
+  enabled: false
+  minReplicas: 2
+  maxReplicas: 8
+  cpuUtilization: 60
+  memoryUtilization: 70
