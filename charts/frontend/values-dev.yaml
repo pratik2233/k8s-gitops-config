@@ -2,7 +2,7 @@ replicaCount: 2
 
 config:
   APP_NAME: frontend
-  APP_ENV: dev
+  APP_ENV: dev-gitops-sync-test
 
 ingress:
   enabled: true
