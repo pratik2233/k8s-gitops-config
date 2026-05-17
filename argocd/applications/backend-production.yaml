@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: git@github.com:pratik2233/k8s-gitops-config.git
+    repoURL: https://github.com/pratik2233/k8s-gitops-config.git
     targetRevision: main
     path: charts/backend
     helm:
